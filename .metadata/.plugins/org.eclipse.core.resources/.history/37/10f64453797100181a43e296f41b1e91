@@ -1,0 +1,33 @@
+package dynamic_programming.climbStairs;
+/*
+https://leetcode-cn.com/problems/climbing-stairs/description/
+ */
+
+
+public class Solution {
+
+	int dp []; 
+	public int climbStairs(int n) {//总共有多少种走法
+
+		int ret = 0;
+		if(n == 1)
+		{
+			return
+		}
+		
+		if(n == 2)
+		{
+			
+		}
+		ret = climbStairs(n - 2) + climbStairs(n - 1);
+		
+		return ret;
+        
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

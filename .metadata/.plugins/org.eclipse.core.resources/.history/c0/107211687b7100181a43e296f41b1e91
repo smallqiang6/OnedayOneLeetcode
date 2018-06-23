@@ -1,0 +1,44 @@
+package dynamic_programming.climbStairs;
+/*
+https://leetcode-cn.com/problems/climbing-stairs/description/
+ */
+
+
+public class Solution {
+
+	int record [] = null; 
+	public int climbStairs(int n) {//总共有多少种走法
+		if(record == null)//first time init
+		{
+			record = new int[n];
+			for(int i = 0; i < n; i++)
+			{
+				record[i] = 0;
+			}
+		}
+		int ret = 0;
+		if(n == 1)//只有一种
+		{
+			return 1;
+		}
+		
+		if(n == 2)//只有两种
+		{
+			return 2;
+		}
+		if(n > 2)
+		{
+			ret = climbStairs(n - 2) + climbStairs(n - 1);
+		}
+		
+		return ret;
+        
+    }
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

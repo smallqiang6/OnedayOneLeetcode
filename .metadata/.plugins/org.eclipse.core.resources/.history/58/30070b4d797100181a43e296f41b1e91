@@ -1,0 +1,25 @@
+package dynamic_programming.climbStairs;
+/*
+https://leetcode-cn.com/problems/climbing-stairs/description/
+ */
+
+
+public class Solution {
+
+	int dp []; 
+	public int climbStairs(int n) {
+
+		int ret = 0;
+		
+		climbStairs(n - 2) + climbStairs(n - 1);
+		
+		return n;
+        
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

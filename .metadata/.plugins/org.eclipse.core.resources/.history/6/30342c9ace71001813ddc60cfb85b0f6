@@ -1,0 +1,16 @@
+package test03;
+/*
+https://leetcode-cn.com/contest/weekly-contest-89/problems/peak-index-in-a-mountain-array/
+ */
+public class Solution1 {
+
+	
+	public int peakIndexInMountainArray(int[] A) {
+        
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

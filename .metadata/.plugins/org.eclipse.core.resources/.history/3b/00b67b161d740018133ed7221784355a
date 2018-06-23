@@ -1,0 +1,7 @@
+package back_track.getPermutation;
+/*
+https://leetcode-cn.com/problems/next-permutation/description/
+ */
+public class Solution2 {
+
+}

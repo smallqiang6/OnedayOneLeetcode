@@ -1,0 +1,12 @@
+package disjoint_set_union.longestConsecutive;
+/*
+http://kickcode.iteye.com/blog/2264925
+ */
+public class Solution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

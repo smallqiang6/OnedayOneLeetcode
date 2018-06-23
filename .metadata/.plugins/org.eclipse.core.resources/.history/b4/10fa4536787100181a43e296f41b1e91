@@ -1,0 +1,17 @@
+package dynamic_programming.climbStairs;
+
+public class Solution {
+
+	
+	public int climbStairs(int n) {
+		
+		return n;
+        
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

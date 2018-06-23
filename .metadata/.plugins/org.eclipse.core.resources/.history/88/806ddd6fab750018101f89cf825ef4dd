@@ -1,0 +1,81 @@
+package heap.topKFrequent;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+/*
+https://leetcode-cn.com/problems/top-k-frequent-elements/description/
+ */
+/*
+给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
+
+例如，
+
+给定数组 [1,1,1,2,2,3] , 和 k = 2，返回 [1,2]。
+
+注意：
+
+你可以假设给定的 k 总是合理的，1 ≤ k ≤ 数组中不相同的元素的个数。
+你的算法的时间复杂度必须优于 O(n log n) , n 是数组的大小。
+
+
+
+解法1: 桶排序（Bucket Sort） 时间复杂度O(n)
+
+1. 遍历数组nums，利用字典cntDict统计各元素出现次数。
+2. 遍历cntDict，利用嵌套列表freqList记录出现次数为i（ i∈[1, n] ）的所有元素
+3. 逆序遍历freqList，将其中的前k个元素输出。
+
+解法2: 哈希表 + 堆   时间复杂度O(n * log k)，其中k为独立元素的个数。
+
+Java: Solution 1
+*/
+
+
+
+//靠谱参考：https://blog.csdn.net/yangwei282367751/article/details/52504361
+
+public class Solution {
+
+	static HashMap<Integer, Integer> map;  
+	public static void main(String[] args) {  
+	    int[] num = {1,2,3,5,2,3,5,7,7,7,5,7};  
+	    ArrayList<Integer> nums = topK(num,4);  
+	    System.out.println(nums);  
+	}  
+	
+	public static  ArrayList<Integer> topK(int[] numbers , int k){  
+	    map = new HashMap<Integer,Integer>();  
+	    for(int i = 0; i<numbers.length; i++){  
+	        Integer count = map.get(numbers[i]);  
+	        if(count ==null){  
+	            count=0;  
+	        }  
+	        map.put(numbers[i], count+1);  
+	    }  
+	    //构造一个数组来放map中的key；  
+	    List<Integer>[] keyList = new List[numbers.length];  
+	     for(int key:map.keySet()){    
+	         //map中数出现的次数；  
+	            int a = map.get(key);  
+	            //将map中的key放在arrayList的里  
+	            if(keyList[a]==null){  
+	                ArrayList<Integer> temp = new ArrayList<Integer>();    
+	                temp.add(key);    
+	                keyList[a] = temp;    
+	            }else{    
+	                keyList[a].add(key);    
+	            }    
+	        }    
+	     ArrayList<Integer> res = new ArrayList<Integer>();    
+	     for(int i=keyList.length-1;i>=0&&res.size()<k;i--){    
+	         if(keyList[i]!=null){    
+	             res.addAll(keyList[i]);    
+	         }    
+	     }  
+	       return res;    
+	}  
+	}
+
+}

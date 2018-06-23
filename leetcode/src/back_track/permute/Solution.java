@@ -1,0 +1,109 @@
+package back_track.permute;
+/*
+ * https://leetcode-cn.com/problems/permutations/description/
+ */
+/*
+给定一个没有重复数字的序列，返回其所有可能的全排列。
+
+示例:
+
+输入: [1,2,3]
+输出:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+ */
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+//DFS 经典题  照葫芦画瓢
+/*
+List<List<Integer>> res;
+
+	public List<List<Integer>> combinationSum(int[] candidates, int target) {
+
+		res = new LinkedList<List<Integer>>();
+		List<Integer> tmp = new LinkedList<Integer>();
+		// 先将数组排序避免重复搜素
+		Arrays.sort(candidates);
+		helper(candidates, target, 0, tmp);
+		return res;
+	}
+
+	private void helper(int[] nums, int target, int index, List<Integer> tmp) {
+		// 如果当前和已经大于目标，说明该路径错误
+		if (target < 0) {
+			return;
+			// 如果当前和等于目标，说明这是一条正确路径，记录该路径
+		} else if (target == 0) {
+			List<Integer> oneComb = new LinkedList<Integer>(tmp);
+			res.add(oneComb);
+			// 否则，对剩余所有可能性进行深度优先搜索
+		} else {
+			// 选取之后的每个数字都是一种可能性
+			for (int i = index; i < nums.length; i++) {
+				// 典型的先加入元素，再进行搜索，递归回来再移出元素的DFS解法
+				tmp.add(nums[i]);
+				helper(nums, target - nums[i], i, tmp);
+				tmp.remove(tmp.size() - 1);
+			}
+		}
+
+	}
+ */
+public class Solution {
+	List<List<Integer>> res;
+	public List<List<Integer>> permute(int[] nums) {
+		res = new LinkedList<List<Integer>>();
+
+		// 先将数组排序避免重复搜素
+		Arrays.sort(nums);
+		helper(nums, 0);
+		return res;
+    }
+	private void helper(int[] nums, int index) {
+		if(index == nums.length -1)  
+	    {  
+			ArrayList<Integer> in = new ArrayList<Integer>();  
+		    for(int i = 0;i<nums.length;i++)  
+		    {  
+		        in.add(nums[i]);  
+		    }  
+		    res.add(in);  
+		    return ;   
+	    }  
+	    else  
+	    {  
+	        for(int i = index;i<=nums.length -1;i++)//第i个数分别与它后面的数字交换就能得到新的排列  
+	        {  
+	            swap(nums, i, index);  
+	            helper(nums, index+1);//表示，若sur和sum相邻时输出  
+	            swap(nums, i, index);  
+	        }  
+	    }  
+	}
+	public void swap(int[] num ,int i , int j)  
+	{  
+	    int temp = num[i];  
+	    num[i] = num[j];  
+	    num[j] = temp;  
+	}  
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int data[]  = {2,3,5};
+		List<List<Integer>> res = new Solution().permute(data);
+		for(List l : res)
+		{
+			System.out.println(l);
+		}
+	}
+
+}

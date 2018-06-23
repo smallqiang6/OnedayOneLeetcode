@@ -1,0 +1,12 @@
+package list.removeNthFromEnd;
+/*
+https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/description/
+ */
+public class Solution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

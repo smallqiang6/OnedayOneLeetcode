@@ -1,0 +1,23 @@
+package back_track.getPermutation;
+
+
+/*
+ * 
+https://leetcode-cn.com/problems/permutation-sequence/description/
+ */
+
+数学规律法：https://www.cnblogs.com/ariel-dreamland/p/9149577.html
+字典序下一个排列法：https://blog.csdn.net/guoziqing506/article/details/51787763
+	
+public class Solution {
+
+	
+	public String getPermutation(int n, int k) {
+        
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
