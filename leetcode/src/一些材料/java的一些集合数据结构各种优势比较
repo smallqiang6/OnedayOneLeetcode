@@ -1,0 +1,61 @@
+https://www.cnblogs.com/zouzz/p/6397878.html
+Queue 与List、LinkedList与 ArrayList 区别
+List 是一个接口，不能实例化，通过实例化ArrayList 或者LinkedList来调用：List list = new ArrayList();
+
+|--List: 元素是有序的(怎么存的就怎么取出来，顺序不会乱)，元素可以重复（角标1上有个3，角标2上也可以有个3）因为该集合体系有索引，
+|-- ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
+|-- LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快）
+|-- Vector：底层是数组数据结构 线程同步（数组长度是可变的百分之百延长）（无论查询还是增删都很慢，被ArrayList替代了）
+
+List 接口下的方法有: 
+
+      boolean add(int index, E element)  
+      boolean addAll(index, collection)
+      boolean remove(int index)
+      set(int index, E element)   //修改指定角标的元素，返回修改的元素
+      get( int index) //返回列表中指定位置的元素
+      subList(int fromIndex, int toIndex) 返回指定范围间（fromIndex(包括)  toIndex(不包括)）的元素
+ 
+
+Queue接口与List、Set同一级别，都是继承了Collection接口。
+
+LinkedList实现了Queue接口。Queue接口窄化了对LinkedList的方法的访问权限（即在方法中的参数类型如果是Queue时，就完全只能访问Queue接口所定义的方法 了，而不能直接访问 LinkedList的非Queue的方法），以使得只有恰当的方法才可以使用。
+
+BlockingQueue 继承了Queue接口。
+
+队列是一种数据结构．它有两个基本操作：在队列尾部加人一个元素，和从队列头部移除一个元素就是说，队列以一种先进先出的方式管理数据，如果你试图向一个 已经满了的阻塞队列中添加一个元素或者是从一个空的阻塞队列中移除一个元索，将导致线程阻塞．在多线程进行合作时，阻塞队列是很有用的工具。工作者线程可 以定期地把中间结果存到阻塞队列中而其他工作者线线程把中间结果取出并在将来修改它们。队列会自动平衡负载。如果第一个线程集运行得比第二个慢，则第二个 线程集在等待结果时就会阻塞。如果第一个线程集运行得快，那么它将等待第二个线程集赶上来。下表显示了jdk1.5中的阻塞队列的操作：
+
+add        增加一个元索                     如果队列已满，则抛出一个IIIegaISlabEepeplian异常
+remove   移除并返回队列头部的元素    如果队列为空，则抛出一个NoSuchElementException异常
+element  返回队列头部的元素             如果队列为空，则抛出一个NoSuchElementException异常
+offer       添加一个元素并返回true       如果队列已满，则返回false
+poll         移除并返问队列头部的元素    如果队列为空，则返回null
+peek       返回队列头部的元素             如果队列为空，则返回null
+put         添加一个元素                      如果队列满，则阻塞
+take        移除并返回队列头部的元素     如果队列为空，则阻塞
+  
+LinkedList 继承　List 接口（特有方法）：
+
+　　addFirst();  在头部添加元素  addLast();在尾部添加元素
+　　getFirst(); getLast();  获取元素但不删除
+　　removeFirst(); removeLast();  获取并且删除　　
+　　jkd1.6中出现了替代方法　　
+　　offerFirst(); offerLast();
+　　peekFirst(); peekLast(); 获取元素，但是元素不被删除。如果集合中没有元素，会返回null
+　　pollFirst(); pollLast(); 获取元素，但是元素被删除。如果集合中没有元素，会返回null
+ArrayList 继承　List　接口（特有方法）：
+
+　　Count属性　记录当前列表的元素个数
+　　Capacity属性　记录能包含的最大数量，可改
+　　Add方法用于添加一个元素到当前列表的末尾
+　　AddRange方法用于添加一批元素到当前列表的末尾
+　　Remove方法用于删除一个元素，通过元素本身的引用来删除
+　　RemoveAt方法用于删除一个元素，通过索引值来删除
+　　RemoveRange用于删除一批元素，通过指定开始的索引和删除的数量来删除
+　　Insert用于添加一个元素到指定位置，列表后面的元素依次往后移动
+　　InsertRange用于从指定位置开始添加一批元素，列表后面的元素依次往后移动
+
+    另外，还有几个类似的方法：
+
+　　Clear方法用于清除现有所有的元素
+　　Contains方法用来查找某个对象在不在列表之中
