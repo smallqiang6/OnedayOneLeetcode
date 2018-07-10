@@ -2,7 +2,10 @@ package sort.insert;
 
 import dlx_util.ListNode;
 
-/*插入排序的动画演示如上。从第一个元素开始，该链表可以被认为已经部分排序（用黑色表示）。
+/*
+ * https://leetcode-cn.com/problems/insertion-sort-list/description/
+ * 
+ * 插入排序的动画演示如上。从第一个元素开始，该链表可以被认为已经部分排序（用黑色表示）。
 每次迭代时，从输入数据中移除一个元素（用红色表示），并原地将其插入到已排好序的链表中。
 
  
@@ -16,7 +19,7 @@ public class Solution {
 	public ListNode insertionSortList(ListNode head) {
 		ListNode preHead = new ListNode(Integer.MIN_VALUE);
 		preHead.next = null;
-		ListNode p = head;// p指向接下来要假如的节点
+		ListNode p = head;// p指向接下来要加入的节点
 
 		while (p != null) {
 			ListNode temp = p;
