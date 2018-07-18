@@ -61,12 +61,47 @@ public class Solution {
 	    }
 		return 0;
     }
+	
+	public int maxDepth(TreeNode root) {
+	    Queue<TreeNode> queue = new LinkedList<TreeNode>();//队列里面存放结点
+	    
+	    if(root == null) {
+	    	return 0;
+	    }
+	    
+	    queue.add(root);
+	    int levelCnt = 0;
+	    while(!queue.isEmpty()) {
+	    	int levelNum = queue.size();
+	    	levelCnt++;
+	    	List<Integer> subList = new LinkedList<>();
+	    	for(int i=0; i<levelNum; i++){
+	    		TreeNode node = queue.poll();
+	    		
+	    		if(node.left == null && node.right == null) {
+	    			//return levelCnt;
+	    			continue;
+	    		}
+	    		
+	    		//将非空左右子树加入queue
+	            if(node.left != null){//如果队首的左结点不为空就把左结点入队
+	                queue.offer(node.left);
+	            }
+	            
+	            if(node.right != null){//如果队首的右结点不为空就把右结点入队
+	                queue.offer(node.right);
+	            }
+	    	}
+	    }
+		return levelCnt;
+    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		TreeNode root = DLX_util.createTree("3,9,20,#,#,15,7");
 		DLX_util.printTree(root);
 		
 		System.out.println(new Solution().minDepth(root));
+		System.out.println(new Solution().maxDepth(root));
 		System.out.println(new Solution().minDepth(null));
 		root = DLX_util.createTree("1,2");
 		System.out.println(new Solution().minDepth(root));
