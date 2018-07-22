@@ -14,7 +14,8 @@ public class Solution {
         List<Integer> tmp = new ArrayList<>();  
         // 排序可以避免重复，然后结果可以安装顺序输出  
         // Arrays.sort(nums);//此题不需要排序  
-        dfsCore2(res, 0, tmp, nums);  
+        dfsCore(res, 0, tmp, nums);  
+        //dfsCore(res, 0, tmp, nums);  
         System.out.println(res);  
         return res;  
     }  
@@ -39,13 +40,18 @@ public class Solution {
             res.add(new ArrayList<Integer>(tmp));  
             return;  
         }  
+
         // 不加入nums[curIdx]  
         dfsCore2(res, curIdx + 1, tmp, nums);  
+
         // 加入nums[curIdx]  
         tmp.add(nums[curIdx]);  
-        dfsCore2(res, curIdx + 1, tmp, nums);  
+
+        dfsCore2(res, curIdx + 1, tmp, nums); 
+
         // 回溯  
         tmp.remove(tmp.size() - 1);  
+
   
     }  
 
