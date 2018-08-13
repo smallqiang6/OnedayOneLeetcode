@@ -46,30 +46,31 @@ package test.week97;
  * 
 */
 public class Solution4 {
-	public int superEggDrop(int K, int N) {
+	public int superEggDrop(int K /* K个鸡蛋 */ , int N /* N楼，1 <= N <= 10000 */) {
 
-        int[][] dp = new int[101][10001];
-        for (int i = 1; i <= 10000; i++) {
-            dp[1][i] = i;
+		int[][] dp = new int[101][10001];
+		for (int i = 1; i <= 10000; i++) {
+			dp[1][i] = i;
 
-        }
+		}
 
-        for (int i = 1; i <= 100; i++) {
-            dp[i][1] = 1;
-        }
-        for (int i = 2; i <= 100; i++) {
-            for (int j = 2; j <= 10000; j++) {
-                dp[i][j] = dp[i][j - 1] + dp[i - 1][j - 1] + 1;
-            }
-        }
+		for (int i = 1; i <= 100; i++) {
+			dp[i][1] = 1;
+		}
+		for (int i = 2; i <= 100; i++) {
+			for (int j = 2; j <= 10000; j++) {
+				dp[i][j] = dp[i][j - 1] + dp[i - 1][j - 1] + 1;//i个鸡蛋试J次能确定多少楼（dp[i][j] ）
+			}
+		}
 
-        for (int i = 1; i <= 10000; i++) {
-            if (dp[K][i] >= N) {
-                return i;
-            }
-        }
-        return -1;
-    }
+		for (int i = 1; i <= 10000; i++) {
+			if (dp[K][i] >= N) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
